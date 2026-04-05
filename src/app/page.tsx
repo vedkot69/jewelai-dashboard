@@ -15,6 +15,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { TrendingUp, AlertTriangle, Lightbulb } from "lucide-react";
 import Card, { CardContent, CardHeader } from "@/components/ui/Card";
 import { KPICard } from "@/components/ui/KPICard";
 import {
@@ -467,20 +468,41 @@ function Dashboard() {
                     AI Insights
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {aiInsights.map((insight, idx) => (
-                      <div
-                        key={idx}
-                        className="bg-gradient-to-br from-gray-900 to-gray-950 rounded-xl p-4 border border-gray-800"
-                      >
-                        <p className="text-2xl mb-2">{insight.icon}</p>
-                        <h4 className="text-sm font-semibold text-white mb-2">
-                          {insight.title}
-                        </h4>
-                        <p className="text-xs text-gray-400">
-                          {insight.description}
-                        </p>
-                      </div>
-                    ))}
+                    {aiInsights.map((insight, idx) => {
+                      const iconMap: Record<string, any> = {
+                        TrendingUp,
+                        AlertTriangle,
+                        Lightbulb,
+                      };
+                      const IconComponent = iconMap[insight.icon];
+                      const iconColor =
+                        insight.type === "Opportunity"
+                          ? "#4ADE80"
+                          : insight.type === "Alert"
+                          ? "#F5A623"
+                          : "#A78BFA";
+                      return (
+                        <div
+                          key={idx}
+                          className="bg-gradient-to-br from-gray-900 to-gray-950 rounded-xl p-5 border border-gray-800"
+                        >
+                          <div
+                            className="w-10 h-10 rounded-lg flex items-center justify-center mb-3"
+                            style={{ background: `${iconColor}15` }}
+                          >
+                            {IconComponent && (
+                              <IconComponent size={20} style={{ color: iconColor }} />
+                            )}
+                          </div>
+                          <h4 className="text-sm font-semibold text-white mb-2">
+                            {insight.title}
+                          </h4>
+                          <p className="text-xs text-gray-400 leading-relaxed">
+                            {insight.description}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
