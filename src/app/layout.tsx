@@ -12,8 +12,33 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "JewelAI Dashboard | CaratSense",
-  description: "Advanced jewellery inventory, pricing, and business intelligence dashboard for Indian jewellers",
-  keywords: ["jewellery", "dashboard", "inventory", "pricing", "CRM", "gold schemes"],
+  description: "AI-Powered Jewellery Retail Intelligence — Inventory, Pricing, CRM & ML Tools for Indian Jewellers",
+  keywords: ["jewellery", "dashboard", "inventory", "pricing", "CRM", "gold schemes", "AI", "ML"],
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  openGraph: {
+    title: "JewelAI Dashboard | CaratSense",
+    description: "AI-Powered Jewellery Retail Intelligence — Inventory, Pricing, CRM & ML Tools for Indian Jewellers",
+    url: "https://jewelai-dashboard.vercel.app",
+    siteName: "JewelAI by CaratSense",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "JewelAI Dashboard by CaratSense",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "JewelAI Dashboard | CaratSense",
+    description: "AI-Powered Jewellery Retail Intelligence",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
