@@ -528,6 +528,76 @@ export const receivablesAging = [
 ];
 
 // ============================================================
+// DASHBOARD AI/ML DATA
+// ============================================================
+
+// AI Command Center — real-time model outputs
+export const aiModelStatus = [
+  { model: 'Demand Predictor', accuracy: 94.2, lastRun: '2 min ago', status: 'live', predictions: 1240 },
+  { model: 'Churn Detector', accuracy: 91.8, lastRun: '5 min ago', status: 'live', predictions: 890 },
+  { model: 'Price Optimizer', accuracy: 88.5, lastRun: '1 min ago', status: 'live', predictions: 2100 },
+  { model: 'Design Recommender', accuracy: 93.1, lastRun: '3 min ago', status: 'live', predictions: 3400 },
+];
+
+// Revenue Attribution: AI vs Manual
+export const revenueAttribution = [
+  { month: 'Jan', aiDriven: 680000, manual: 1000000 },
+  { month: 'Feb', aiDriven: 820000, manual: 1100000 },
+  { month: 'Mar', aiDriven: 980000, manual: 1170000 },
+  { month: 'Apr', aiDriven: 1250000, manual: 1200000 },
+  { month: 'May', aiDriven: 1480000, manual: 1200000 },
+  { month: 'Jun', aiDriven: 1720000, manual: 1170000 },
+];
+
+// Live AI Actions Feed
+export const aiActionsFeed = [
+  { id: 1, time: '2 min ago', action: 'Sent personalised Kundan Set to Priya Sharma via WhatsApp', model: 'Design Recommender', impact: '+₹1.85L potential', status: 'sent' },
+  { id: 2, time: '8 min ago', action: 'Flagged Vintage Filigree Pendant for 20% markdown — aging 187 days', model: 'Dead Stock Detector', impact: 'Save ₹45.6K capital', status: 'pending' },
+  { id: 3, time: '12 min ago', action: 'Predicted ₹68L revenue for May wedding season — stock Kundan & Temple', model: 'Demand Predictor', impact: '+₹12L uplift', status: 'alert' },
+  { id: 4, time: '18 min ago', action: 'Detected churn risk for 23 VIP customers — dormant 45+ days', model: 'Churn Detector', impact: '₹8.9L at risk', status: 'alert' },
+  { id: 5, time: '25 min ago', action: 'Auto-adjusted making charges for Diamond Solitaire Ring — competitor undercut', model: 'Price Optimizer', impact: '+4.2% margin', status: 'done' },
+  { id: 6, time: '32 min ago', action: 'Matched 12 customers to new Temple Necklace design based on past purchases', model: 'Design Recommender', impact: '+₹7.4L pipeline', status: 'sent' },
+];
+
+// Anomaly Detection
+export const anomalyAlerts = [
+  { id: 1, type: 'spike', metric: 'Gold Bangle Sales', change: '+340%', period: 'last 2 hours', severity: 'info', reason: 'Akshaya Tritiya pre-booking started' },
+  { id: 2, type: 'drop', metric: 'Bangalore Store Footfall', change: '-45%', period: 'today', severity: 'warning', reason: 'Local bandh — model suggests redirect to WhatsApp' },
+  { id: 3, type: 'spike', metric: 'Gold Price Volatility', change: '+2.1%', period: 'last 4 hours', severity: 'critical', reason: 'USD weakening — lock purchase orders now' },
+];
+
+// Customer Intelligence Summary
+export const customerIntelligence = {
+  totalProfiled: 8940,
+  aiEngaged: 4230,
+  conversionLift: 34,
+  avgBasketIncrease: 18,
+  churnPrevented: 156,
+  revenueProtected: 1240000,
+  nextBestActions: 342,
+  autoSent: 89,
+};
+
+// Predictive Inventory Heatmap
+export const inventoryHeatmap = [
+  { category: 'Kundan Sets', current: 45, predicted: 120, gap: -75, urgency: 'critical', action: 'Order 80 units by Apr 10' },
+  { category: 'Gold Bangles', current: 180, predicted: 210, gap: -30, urgency: 'warning', action: 'Order 50 units by Apr 15' },
+  { category: 'Temple Necklaces', current: 60, predicted: 140, gap: -80, urgency: 'critical', action: 'Order 90 units by Apr 8' },
+  { category: 'Diamond Rings', current: 95, predicted: 85, gap: 10, urgency: 'ok', action: 'Stock adequate' },
+  { category: 'Silver Anklets', current: 200, predicted: 120, gap: 80, urgency: 'overstock', action: 'Run flash sale — clear 60 units' },
+  { category: 'Gold Chains', current: 110, predicted: 100, gap: 10, urgency: 'ok', action: 'Stock adequate' },
+];
+
+// AI Confidence Score Over Time
+export const aiConfidenceTimeline = [
+  { week: 'W1 Mar', demand: 89, pricing: 85, churn: 87, recommendation: 91 },
+  { week: 'W2 Mar', demand: 90, pricing: 86, churn: 88, recommendation: 92 },
+  { week: 'W3 Mar', demand: 92, pricing: 88, churn: 90, recommendation: 93 },
+  { week: 'W4 Mar', demand: 93, pricing: 87, churn: 91, recommendation: 93 },
+  { week: 'W1 Apr', demand: 94, pricing: 89, churn: 92, recommendation: 94 },
+];
+
+// ============================================================
 // ML TOOL DATA — Customer Preferences & Sales Forecasting
 // ============================================================
 
