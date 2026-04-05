@@ -56,6 +56,7 @@ import {
   aiConfidenceTimeline,
   aiInsights,
 } from "@/lib/data";
+import { useGoldPrice } from "@/hooks/useGoldPrice";
 
 // Shared tooltip
 const DarkTooltip = ({ active, payload, label }: any) => {
@@ -84,6 +85,7 @@ const DarkTooltip = ({ active, payload, label }: any) => {
 
 function Dashboard() {
   const [feedFilter, setFeedFilter] = useState<string>("all");
+  const { data: goldLive, loading: goldLoading } = useGoldPrice();
 
   const filteredFeed =
     feedFilter === "all"
@@ -529,47 +531,85 @@ function Dashboard() {
           </ResponsiveContainer>
         </div>
 
-        {/* Gold Price with AI Prediction */}
+        {/* Live Gold Price — API Connected */}
         <div className="rounded-2xl p-5" style={{ background: "#111111" }}>
           <h3 className="text-[15px] font-bold text-white flex items-center gap-2 mb-1">
             <Sparkles size={14} className="text-[#F5A623]" />
-            Gold Price + AI Forecast
+            Live Gold Rate
+            <span className="inline-flex items-center gap-1 ml-auto px-2 py-0.5 rounded-full text-[9px] font-semibold bg-[#4ADE80]/10 text-[#4ADE80] border border-[#4ADE80]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80] animate-pulse" />
+              LIVE
+            </span>
           </h3>
-          <p className="text-[11px] text-[#6B7280] mb-3">
-            Live price with ML prediction overlay
+          <p className="text-[10px] text-[#6B7280] mb-4">
+            Real-time from gold-api.com · Auto-refreshes every 5 min
           </p>
-          <ResponsiveContainer width="100%" height={180}>
-            <AreaChart data={goldPriceData.slice(-12)}>
-              <defs>
-                <linearGradient id="goldAreaGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#F5A623" stopOpacity={0.25} />
-                  <stop offset="95%" stopColor="#F5A623" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <CartesianGrid stroke="rgba(255,255,255,0.04)" />
-              <XAxis dataKey="time" tick={{ fill: "#6B7280", fontSize: 9 }} axisLine={false} />
-              <YAxis domain={["auto", "auto"]} tick={{ fill: "#6B7280", fontSize: 9 }} axisLine={false} />
-              <Tooltip content={<DarkTooltip />} />
-              <Area
-                type="monotone"
-                dataKey="price"
-                stroke="#F5A623"
-                fill="url(#goldAreaGrad)"
-                strokeWidth={2}
-                name="₹/gram"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
-          <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/[0.06]">
-            <div className="rounded-lg p-2.5" style={{ background: "rgba(255,255,255,0.03)" }}>
-              <div className="text-[10px] text-[#6B7280]">AI Predicted (Next Week)</div>
-              <div className="text-[16px] font-bold text-[#4ADE80]">₹7,420</div>
+
+          {goldLoading ? (
+            <div className="flex items-center justify-center h-[200px]">
+              <div className="w-6 h-6 border-2 border-[#F5A623] border-t-transparent rounded-full animate-spin" />
             </div>
-            <div className="rounded-lg p-2.5" style={{ background: "rgba(255,255,255,0.03)" }}>
-              <div className="text-[10px] text-[#6B7280]">Confidence</div>
-              <div className="text-[16px] font-bold text-[#F5A623]">82%</div>
+          ) : goldLive?.gold ? (
+            <>
+              {/* Main 24K Price */}
+              <div className="text-center mb-4">
+                <div className="text-[11px] text-[#6B7280] uppercase tracking-wider mb-1">
+                  24K Gold per Gram
+                </div>
+                <div className="text-[36px] font-bold text-[#F5A623] leading-tight">
+                  ₹{goldLive.gold.perGram24K.toLocaleString("en-IN")}
+                </div>
+                <div className="text-[10px] text-[#6B7280] mt-1">
+                  Updated {goldLive.updatedAtReadable}
+                </div>
+              </div>
+
+              {/* Price Grid */}
+              <div className="grid grid-cols-2 gap-2 mb-3">
+                <div className="rounded-lg p-2.5" style={{ background: "rgba(255,255,255,0.03)" }}>
+                  <div className="text-[10px] text-[#6B7280]">22K / gram</div>
+                  <div className="text-[15px] font-bold text-white">
+                    ₹{goldLive.gold.perGram22K.toLocaleString("en-IN")}
+                  </div>
+                </div>
+                <div className="rounded-lg p-2.5" style={{ background: "rgba(255,255,255,0.03)" }}>
+                  <div className="text-[10px] text-[#6B7280]">18K / gram</div>
+                  <div className="text-[15px] font-bold text-white">
+                    ₹{goldLive.gold.perGram18K.toLocaleString("en-IN")}
+                  </div>
+                </div>
+                <div className="rounded-lg p-2.5" style={{ background: "rgba(255,255,255,0.03)" }}>
+                  <div className="text-[10px] text-[#6B7280]">24K / 10 gram</div>
+                  <div className="text-[15px] font-bold text-[#F5A623]">
+                    ₹{goldLive.gold.per10Gram24K.toLocaleString("en-IN")}
+                  </div>
+                </div>
+                <div className="rounded-lg p-2.5" style={{ background: "rgba(255,255,255,0.03)" }}>
+                  <div className="text-[10px] text-[#6B7280]">Silver / gram</div>
+                  <div className="text-[15px] font-bold text-[#B0B0AC]">
+                    ₹{goldLive.silver.perGram.toLocaleString("en-IN")}
+                  </div>
+                </div>
+              </div>
+
+              {/* USD Rate */}
+              <div className="rounded-lg p-2.5 text-center" style={{ background: "rgba(255,255,255,0.03)" }}>
+                <span className="text-[10px] text-[#6B7280]">USD/INR: </span>
+                <span className="text-[12px] font-semibold text-white">
+                  {goldLive.exchangeRate?.toFixed(2)}
+                </span>
+                <span className="text-[10px] text-[#6B7280] ml-3">Gold/oz: </span>
+                <span className="text-[12px] font-semibold text-white">
+                  ₹{goldLive.gold.perOz.toLocaleString("en-IN")}
+                </span>
+              </div>
+            </>
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-[12px] text-[#EF4444]">Unable to fetch live rate</p>
+              <p className="text-[10px] text-[#6B7280] mt-1">Will retry automatically</p>
             </div>
-          </div>
+          )}
         </div>
       </div>
 

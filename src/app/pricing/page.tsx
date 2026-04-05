@@ -18,6 +18,7 @@ import {
   AreaChart,
 } from "recharts";
 import { Lock, Zap, TrendingUp } from "lucide-react";
+import { useGoldPrice } from "@/hooks/useGoldPrice";
 
 const pricingData = {
   goldPriceHistory: [
@@ -61,8 +62,9 @@ export default function PricingPage() {
   const [purity, setPurity] = useState<number>(22);
   const [makingChargePercent, setMakingChargePercent] = useState<number>(12);
   const [stoneCost, setStoneCost] = useState<number>(0);
+  const { data: goldLive } = useGoldPrice();
 
-  const basePricePerGram = 7650;
+  const basePricePerGram = goldLive?.gold?.perGram24K || 7650;
   const pureGold = (weight * purity) / 24;
   const goldCost = pureGold * basePricePerGram;
   const makingCharge = (goldCost * makingChargePercent) / 100;
