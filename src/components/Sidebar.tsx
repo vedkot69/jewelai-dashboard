@@ -14,10 +14,8 @@ import {
   BarChart3,
   Shield,
   HandshakeIcon,
-  Users2,
-  Wand2,
-  Globe,
-  Settings,
+  Brain,
+  TrendingUp as TrendingUpIcon,
   Menu,
   X,
   ChevronLeft,
@@ -37,10 +35,8 @@ const navigationItems = [
   { id: "/reports", label: "MIS Reports", icon: BarChart3 },
   { id: "/compliance", label: "Compliance", icon: Shield, badge: 2 },
   { id: "/receivables", label: "Receivables", icon: HandshakeIcon },
-  { id: "/sales-team", label: "Sales Team", icon: Users2 },
-  { id: "/design-tool", label: "Design Tool", icon: Wand2 },
-  { id: "/portal", label: "Online Portal", icon: Globe },
-  { id: "/settings", label: "Settings", icon: Settings },
+  { id: "/ml-preferences", label: "AI Preferences", icon: Brain },
+  { id: "/ml-forecasting", label: "AI Forecasting", icon: TrendingUpIcon },
 ];
 
 export default function Sidebar() {

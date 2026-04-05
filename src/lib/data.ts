@@ -526,3 +526,132 @@ export const receivablesAging = [
   { bucket: '60-90', amount: '₹16,70,000', percent: 17 },
   { bucket: '90+', amount: '₹8,80,000', percent: 10 },
 ];
+
+// ============================================================
+// ML TOOL DATA — Customer Preferences & Sales Forecasting
+// ============================================================
+
+// Customer Taste Profiles (cluster analysis from past sales)
+export const customerTasteProfiles = [
+  { segment: 'Traditional Bridal', customers: 1240, avgSpend: 185000, topCategory: 'Kundan Sets', preference: 92, color: '#F5A623' },
+  { segment: 'Modern Minimalist', customers: 890, avgSpend: 45000, topCategory: 'Solitaire Rings', preference: 87, color: '#A78BFA' },
+  { segment: 'Temple Devotee', customers: 1560, avgSpend: 62000, topCategory: 'Temple Jewellery', preference: 95, color: '#4ADE80' },
+  { segment: 'Trendy Everyday', customers: 2100, avgSpend: 18000, topCategory: 'Light Gold Chains', preference: 78, color: '#3B82F6' },
+  { segment: 'Investment Buyer', customers: 780, avgSpend: 250000, topCategory: 'Gold Coins & Bars', preference: 88, color: '#EF4444' },
+];
+
+// Design Affinity Scores (ML-predicted design preferences per segment)
+export const designAffinityData = [
+  { design: 'Kundan Bridal', traditional: 95, modern: 20, temple: 30, trendy: 15, investment: 10 },
+  { design: 'Solitaire Ring', traditional: 25, modern: 92, temple: 10, trendy: 65, investment: 15 },
+  { design: 'Temple Necklace', traditional: 40, modern: 15, temple: 98, trendy: 20, investment: 8 },
+  { design: 'Light Chain', traditional: 15, modern: 70, temple: 12, trendy: 95, investment: 5 },
+  { design: 'Gold Bangle', traditional: 85, modern: 55, temple: 60, trendy: 45, investment: 30 },
+  { design: 'Diamond Pendant', traditional: 30, modern: 88, temple: 15, trendy: 75, investment: 20 },
+  { design: 'Coin/Bar', traditional: 10, modern: 5, temple: 8, trendy: 5, investment: 98 },
+];
+
+// Purchase Pattern Analysis (monthly buying trends per category)
+export const purchasePatternData = [
+  { month: 'Oct', bangles: 320, necklaces: 180, rings: 420, earrings: 560, chains: 290 },
+  { month: 'Nov', bangles: 480, necklaces: 340, rings: 380, earrings: 520, chains: 310 },
+  { month: 'Dec', bangles: 560, necklaces: 520, rings: 340, earrings: 480, chains: 350 },
+  { month: 'Jan', bangles: 380, necklaces: 280, rings: 560, earrings: 420, chains: 280 },
+  { month: 'Feb', bangles: 420, necklaces: 310, rings: 620, earrings: 380, chains: 260 },
+  { month: 'Mar', bangles: 520, necklaces: 450, rings: 480, earrings: 510, chains: 340 },
+];
+
+// Customer Lifetime Value Distribution
+export const clvDistribution = [
+  { range: '< ₹50K', count: 3200, percent: 36 },
+  { range: '₹50K - 1L', count: 2400, percent: 27 },
+  { range: '₹1L - 3L', count: 1800, percent: 20 },
+  { range: '₹3L - 5L', count: 890, percent: 10 },
+  { range: '> ₹5L', count: 650, percent: 7 },
+];
+
+// Personalised Recommendations (AI-generated for top customers)
+export const aiRecommendations = [
+  { id: 1, customer: 'Priya Sharma', segment: 'Traditional Bridal', recommended: 'Kundan Choker Set', confidence: 94, reason: 'Bought 3 Kundan pieces in last 6 months, wedding season approaching' },
+  { id: 2, customer: 'Ananya Reddy', segment: 'Modern Minimalist', recommended: 'Rose Gold Solitaire', confidence: 89, reason: 'Prefers modern designs, anniversary in 2 weeks' },
+  { id: 3, customer: 'Meera Iyer', segment: 'Temple Devotee', recommended: 'Lakshmi Temple Set', confidence: 96, reason: 'Bought temple jewellery for every festival, Akshaya Tritiya ahead' },
+  { id: 4, customer: 'Sneha Kapoor', segment: 'Trendy Everyday', recommended: 'Diamond Chain Pendant', confidence: 82, reason: 'Browses lightweight designs weekly, budget ₹15-25K' },
+  { id: 5, customer: 'Kavita Mehta', segment: 'Investment Buyer', recommended: 'Gold Bar 50g', confidence: 91, reason: 'Quarterly gold buyer, due for next purchase' },
+];
+
+// Regional Taste Map
+export const regionalTasteMap = [
+  { region: 'North India', kundan: 85, temple: 20, modern: 45, antique: 60, weight: 'Heavy (40g+)' },
+  { region: 'South India', kundan: 25, temple: 92, modern: 30, antique: 70, weight: 'Medium (20-40g)' },
+  { region: 'West India', kundan: 50, temple: 35, modern: 78, antique: 40, weight: 'Light (10-20g)' },
+  { region: 'East India', kundan: 40, temple: 45, modern: 35, antique: 65, weight: 'Heavy (30g+)' },
+];
+
+// ============================================================
+// SALES FORECASTING DATA
+// ============================================================
+
+// Monthly Sales Forecast (actual vs predicted with confidence intervals)
+export const salesForecastData = [
+  { month: 'Oct 25', actual: 1450000, predicted: null, upper: null, lower: null },
+  { month: 'Nov 25', actual: 1820000, predicted: null, upper: null, lower: null },
+  { month: 'Dec 25', actual: 2340000, predicted: null, upper: null, lower: null },
+  { month: 'Jan 26', actual: 1680000, predicted: 1720000, upper: 1850000, lower: 1590000 },
+  { month: 'Feb 26', actual: 1920000, predicted: 1880000, upper: 2020000, lower: 1740000 },
+  { month: 'Mar 26', actual: 2150000, predicted: 2100000, upper: 2280000, lower: 1920000 },
+  { month: 'Apr 26', actual: null, predicted: 2450000, upper: 2680000, lower: 2220000 },
+  { month: 'May 26', actual: null, predicted: 2680000, upper: 2950000, lower: 2410000 },
+  { month: 'Jun 26', actual: null, predicted: 2890000, upper: 3200000, lower: 2580000 },
+];
+
+// Category Trend Predictions
+export const categoryTrends = [
+  { category: 'Gold Bangles', currentDemand: 520, predictedDemand: 680, growth: 30.8, season: 'Wedding', confidence: 92 },
+  { category: 'Diamond Rings', currentDemand: 340, predictedDemand: 410, growth: 20.6, season: 'Valentine/Anniversary', confidence: 87 },
+  { category: 'Temple Necklaces', currentDemand: 280, predictedDemand: 450, growth: 60.7, season: 'Akshaya Tritiya', confidence: 94 },
+  { category: 'Gold Chains', currentDemand: 410, predictedDemand: 380, growth: -7.3, season: 'Off-season', confidence: 78 },
+  { category: 'Kundan Sets', currentDemand: 180, predictedDemand: 340, growth: 88.9, season: 'Wedding', confidence: 91 },
+  { category: 'Silver Anklets', currentDemand: 620, predictedDemand: 550, growth: -11.3, season: 'Post-Summer', confidence: 75 },
+];
+
+// Seasonal Pattern Analysis (indexed demand — 100 = average)
+export const seasonalPatterns = [
+  { month: 'Jan', gold: 85, diamond: 78, silver: 70, overall: 80 },
+  { month: 'Feb', gold: 95, diamond: 130, silver: 75, overall: 98 },
+  { month: 'Mar', gold: 105, diamond: 95, silver: 90, overall: 100 },
+  { month: 'Apr', gold: 140, diamond: 110, silver: 120, overall: 130 },
+  { month: 'May', gold: 150, diamond: 120, silver: 110, overall: 135 },
+  { month: 'Jun', gold: 110, diamond: 90, silver: 85, overall: 100 },
+  { month: 'Jul', gold: 80, diamond: 75, silver: 65, overall: 75 },
+  { month: 'Aug', gold: 75, diamond: 70, silver: 60, overall: 70 },
+  { month: 'Sep', gold: 90, diamond: 85, silver: 80, overall: 87 },
+  { month: 'Oct', gold: 130, diamond: 140, silver: 150, overall: 138 },
+  { month: 'Nov', gold: 145, diamond: 155, silver: 160, overall: 152 },
+  { month: 'Dec', gold: 95, diamond: 90, silver: 85, overall: 90 },
+];
+
+// Design Lifecycle Predictions
+export const designLifecycle = [
+  { design: 'Kundan Bridal Set', phase: 'Peak', monthsLeft: 4, demandIndex: 95, recommendation: 'Maintain stock levels' },
+  { design: 'Minimalist Gold Ring', phase: 'Growing', monthsLeft: 8, demandIndex: 72, recommendation: 'Increase production' },
+  { design: 'Antique Temple Set', phase: 'Revival', monthsLeft: 12, demandIndex: 65, recommendation: 'Stock moderately' },
+  { design: 'Layered Chain Set', phase: 'Peak', monthsLeft: 3, demandIndex: 88, recommendation: 'Push sales now' },
+  { design: 'Vintage Filigree', phase: 'Declining', monthsLeft: 2, demandIndex: 35, recommendation: 'Clear with discount' },
+  { design: 'Rose Gold Pendant', phase: 'Growing', monthsLeft: 10, demandIndex: 78, recommendation: 'Increase production' },
+];
+
+// Wedding Season Impact Forecast
+export const weddingSeasonForecast = [
+  { period: 'Apr 15-30', muhurtDays: 8, expectedOrders: 340, expectedRevenue: 4500000, intensity: 'High' },
+  { period: 'May 1-15', muhurtDays: 12, expectedOrders: 520, expectedRevenue: 6800000, intensity: 'Peak' },
+  { period: 'May 16-31', muhurtDays: 6, expectedOrders: 280, expectedRevenue: 3600000, intensity: 'Medium' },
+  { period: 'Jun 1-15', muhurtDays: 4, expectedOrders: 180, expectedRevenue: 2200000, intensity: 'Low' },
+];
+
+// Gold Price Forecast
+export const goldPriceForecast = [
+  { week: 'This Week', predicted: 7380, lower: 7320, upper: 7440, confidence: 88 },
+  { week: 'Next Week', predicted: 7420, lower: 7340, upper: 7500, confidence: 82 },
+  { week: 'Week 3', predicted: 7460, lower: 7350, upper: 7570, confidence: 75 },
+  { week: 'Week 4', predicted: 7500, lower: 7360, upper: 7640, confidence: 68 },
+];
