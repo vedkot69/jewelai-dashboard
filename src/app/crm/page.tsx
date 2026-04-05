@@ -3,8 +3,6 @@
 import { useState } from "react";
 import Card, { CardContent, CardHeader } from "@/components/ui/Card";
 import { KPICard } from "@/components/ui/KPICard";
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
 import {
   PieChart,
   Pie,
@@ -204,12 +202,8 @@ export default function CRMPage() {
   const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
 
   return (
-    <div className="flex h-full gap-4 p-4">
-      <Sidebar />
-      <div className="flex-1 flex flex-col gap-4 overflow-hidden">
-        <Header />
-        <main className="flex-1 overflow-y-auto scroll-smooth">
-          <div className="space-y-6 pb-8">
+    <div className="p-6 md:p-8 max-w-7xl mx-auto">
+      <div className="space-y-6 pb-8">
             {/* Page Header */}
             <div>
               <h1 className="text-3xl font-bold text-[#2D2D2D] tracking-tight">
@@ -620,8 +614,6 @@ export default function CRMPage() {
                 </div>
               </CardContent>
             </Card>
-          </div>
-        </main>
       </div>
     </div>
   );

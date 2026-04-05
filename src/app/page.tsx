@@ -15,8 +15,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
 import Card, { CardContent, CardHeader } from "@/components/ui/Card";
 import { KPICard } from "@/components/ui/KPICard";
 import {
@@ -64,18 +62,7 @@ const GoldPriceTooltip = ({ active, payload }: any) => {
 
 function Dashboard() {
   return (
-    <div className="min-h-screen bg-[#F0F0EC] flex">
-      {/* Sidebar */}
-      <Sidebar />
-
-      {/* Main content */}
-      <main className="flex-1 flex flex-col md:ml-0">
-        {/* Header */}
-        <Header />
-
-        {/* Content area */}
-        <div className="flex-1 overflow-auto">
-          <div className="p-6 md:p-8 max-w-7xl mx-auto">
+    <div className="p-6 md:p-8 max-w-7xl mx-auto">
             {/* KPI Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
               <KPICard
@@ -505,9 +492,6 @@ function Dashboard() {
                 JewelAI Dashboard · Powered by CaratSense
               </p>
             </footer>
-          </div>
-        </div>
-      </main>
     </div>
   );
 }
