@@ -22,7 +22,9 @@ import {
   ChevronRight,
   Gem,
   TrendingUp,
+  Loader2,
 } from "lucide-react";
+import { useGoldPrice } from "@/hooks/useGoldPrice";
 
 const navigationItems = [
   { id: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -43,6 +45,7 @@ export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
+  const { data: goldLive, loading: goldLoading } = useGoldPrice();
 
   // Close mobile sidebar on route change
   useEffect(() => {
@@ -128,7 +131,7 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {/* Gold Price Ticker */}
+      {/* Live Gold Price Ticker */}
       {!collapsed && (
         <div className="p-3 border-t border-white/[0.06]">
           <div className="rounded-xl p-4" style={{ background: "rgba(245, 166, 35, 0.06)", border: "1px solid rgba(245, 166, 35, 0.1)" }}>
@@ -138,12 +141,33 @@ export default function Sidebar() {
               </span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80] animate-pulse" />
             </div>
-            <div className="text-xl font-bold text-white">₹7,356</div>
-            <div className="flex items-center gap-1 mt-1.5">
-              <TrendingUp size={12} className="text-[#4ADE80]" />
-              <span className="text-[11px] font-semibold text-[#4ADE80]">+₹89 (+1.22%)</span>
-            </div>
-            <div className="text-[10px] text-[#6B7280] mt-2">MCX per gram</div>
+            {goldLoading ? (
+              <div className="flex items-center gap-2 py-2">
+                <Loader2 size={14} className="text-[#F5A623] animate-spin" />
+                <span className="text-[11px] text-[#6B7280]">Fetching live rate...</span>
+              </div>
+            ) : goldLive?.gold ? (
+              <>
+                <div className="text-xl font-bold text-white">
+                  ₹{goldLive.gold.perGram24K.toLocaleString("en-IN")}
+                </div>
+                <div className="flex items-center justify-between mt-1.5">
+                  <div className="text-[11px] text-[#6B7280]">
+                    22K: <span className="text-white font-semibold">₹{goldLive.gold.perGram22K.toLocaleString("en-IN")}</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between mt-1">
+                  <div className="text-[11px] text-[#6B7280]">
+                    Silver: <span className="text-[#B0B0AC] font-semibold">₹{goldLive.silver.perGram.toLocaleString("en-IN")}</span>
+                  </div>
+                </div>
+                <div className="text-[9px] text-[#6B7280] mt-2">
+                  per gram · {goldLive.updatedAtReadable}
+                </div>
+              </>
+            ) : (
+              <div className="text-[11px] text-[#EF4444]">Unable to load</div>
+            )}
           </div>
         </div>
       )}
